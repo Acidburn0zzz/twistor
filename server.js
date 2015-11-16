@@ -43,7 +43,7 @@ const parseQuery = raw => {
 	finished.take = raw.take > 0 && raw.take <= 50 && raw.take == (raw.take|0) ? raw.take : 20;
 	finished.skip = raw.skip > 0 && raw.skip == (raw.skip|0) ? raw.skip : 0;
 	finished.sort = _.find(sorts, sort => sort == raw.sort) || "delete_time";
-	finished.asc = raw.asc && (raw.asc == "true" || raw.asc == "1");
+	finished.asc = !!raw.asc && (raw.asc == "true" || raw.asc == "1");
 
 	if(raw.u)
 		finished.u = raw.u;
