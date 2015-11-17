@@ -4,7 +4,7 @@ const subject = {
 	img: (() =>
 		dom.get("handleimg"))(),
 	imgClear: function() {
-		subject.img.src = this.value ? "hmm.png" : "ok.png";
+		subject.img.src = "hmm.png";
 	},
 	handle: _.debounce(function() {
 		subject.checkName(this.value)
@@ -12,8 +12,8 @@ const subject = {
 				subject.img.src = "ok.png";
 				//console.log(result);
 			})
-			.catch(err => subject.img.src = err === "" ? "ok.png" : "nogood.png");
-	}, 1000/2),
+			.catch(err => subject.img.src = err === "" ? "hmm.png" : "nogood.png");
+	}, 600),
 	checkName: name => 
 		/^[a-zA-Z0-9_]{1,15}$/.test(name) ?
 			ajax("GET", `/api/userid?uname=${name}`) :
